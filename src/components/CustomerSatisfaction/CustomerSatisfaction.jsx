@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useIntl, defineMessages } from 'react-intl';
-import { Form, Button, TextArea } from 'semantic-ui-react';
+import { Form, Button, TextArea, Loader, Message } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
 import ThumbsUp from '../../icons/thumbs-up-regular.svg';
 import ThumbsDown from '../../icons/thumbs-down-regular.svg';
@@ -32,6 +32,10 @@ const messages = defineMessages({
     id: 'customer_satisfaction_submit',
     defaultMessage: 'Submit your comment',
   },
+  thank_you: {
+    id: 'customer_satisfaction_thank_you',
+    defaultMessage: 'Thank you for your feedback!',
+  },
 });
 
 const CustomerSatisfaction = () => {
@@ -45,7 +49,7 @@ const CustomerSatisfaction = () => {
   const submitResults = useSelector(
     (state) => state.submitCustomerSatisfaction,
   );
-  console.log(submitResults);
+
   const changeSatisfaction = (e, s) => {
     e.stopPropagation();
     e.preventDefault();
@@ -91,81 +95,93 @@ const CustomerSatisfaction = () => {
   return (
     <div className="customer-satisfaction">
       <h2 id="cs-radiogroup-label">{intl.formatMessage(messages.title)}</h2>
-      <Form
-        onSubmit={() => {
-          sendFormData();
-        }}
-      >
-        <div className="buttons" aria-labelledby="cs-radiogroup-label">
-          <Button
-            animated={
-              satisfaction == null || satisfaction !== true ? 'fade' : null
-            }
-            color="green"
-            onClick={(e) => {
-              changeSatisfaction(e, true);
-            }}
-            aria-controls="cs-more"
-            active={satisfaction === true}
-          >
-            <Button.Content hidden>
-              {intl.formatMessage(messages.yes)}
-            </Button.Content>
-            {(satisfaction == null || satisfaction !== true) && (
-              <Button.Content visible>
-                <Icon name={ThumbsUp} size="1.5rem" />
-              </Button.Content>
-            )}
-          </Button>
 
-          <Button
-            animated={
-              satisfaction == null || satisfaction !== false ? 'fade' : null
-            }
-            color="red"
-            onClick={(e) => {
-              changeSatisfaction(e, false);
-            }}
-            aria-controls="cs-more"
-            active={satisfaction === false}
-          >
-            <Button.Content hidden>
-              {intl.formatMessage(messages.no)}
-            </Button.Content>
-            {(satisfaction == null || satisfaction !== false) && (
-              <Button.Content visible>
-                <Icon name={ThumbsDown} size="1.5rem" />
-              </Button.Content>
-            )}
-          </Button>
-        </div>
-
-        <div
-          id="cs-more"
-          role="region"
-          aria-expanded={satisfaction !== null}
-          aria-hidden={satisfaction != null}
+      {!submitResults?.loading && !submitResults.loaded && (
+        <Form
+          onSubmit={() => {
+            sendFormData();
+          }}
         >
-          <div className="comment">
-            <TextArea
-              placeholder={intl.formatMessage(messages.suggestions_placeholder)}
-              onChange={(e, v) => {
-                setFormData({ ...formData, comment: v.value });
-              }}
-            />
-          </div>
-          <GoogleReCaptchaWidget onVerify={onVerifyCaptcha} />
-
-          <div className="submit-wrapper">
+          <div className="buttons" aria-labelledby="cs-radiogroup-label">
             <Button
-              type="submit"
-              content={intl.formatMessage(messages.submit)}
-              primary
-              disabled={captcha && !validToken?.current}
-            />
+              animated={
+                satisfaction == null || satisfaction !== true ? 'fade' : null
+              }
+              color="green"
+              onClick={(e) => {
+                changeSatisfaction(e, true);
+              }}
+              aria-controls="cs-more"
+              active={satisfaction === true}
+            >
+              <Button.Content hidden>
+                {intl.formatMessage(messages.yes)}
+              </Button.Content>
+              {(satisfaction == null || satisfaction !== true) && (
+                <Button.Content visible>
+                  <Icon name={ThumbsUp} size="1.5rem" />
+                </Button.Content>
+              )}
+            </Button>
+
+            <Button
+              animated={
+                satisfaction == null || satisfaction !== false ? 'fade' : null
+              }
+              color="red"
+              onClick={(e) => {
+                changeSatisfaction(e, false);
+              }}
+              aria-controls="cs-more"
+              active={satisfaction === false}
+            >
+              <Button.Content hidden>
+                {intl.formatMessage(messages.no)}
+              </Button.Content>
+              {(satisfaction == null || satisfaction !== false) && (
+                <Button.Content visible>
+                  <Icon name={ThumbsDown} size="1.5rem" />
+                </Button.Content>
+              )}
+            </Button>
           </div>
-        </div>
-      </Form>
+
+          <div
+            id="cs-more"
+            role="region"
+            aria-expanded={satisfaction !== null}
+            aria-hidden={satisfaction != null}
+          >
+            <div className="comment">
+              <TextArea
+                placeholder={intl.formatMessage(
+                  messages.suggestions_placeholder,
+                )}
+                onChange={(e, v) => {
+                  setFormData({ ...formData, comment: v.value });
+                }}
+              />
+            </div>
+            <GoogleReCaptchaWidget onVerify={onVerifyCaptcha} />
+
+            <div className="submit-wrapper">
+              <Button
+                type="submit"
+                content={intl.formatMessage(messages.submit)}
+                primary
+                disabled={captcha && !validToken?.current}
+              />
+            </div>
+          </div>
+        </Form>
+      )}
+
+      {submitResults?.loading && <Loader active inline="centered" />}
+      {submitResults?.loaded && (
+        <Message positive>
+          <p>{intl.formatMessage(messages.thank_you)}</p>
+        </Message>
+      )}
     </div>
   );
 };
