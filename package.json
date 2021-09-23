@@ -1,0 +1,33 @@
+{
+  "name": "volto-customer-satisfaction",
+  "version": "0.1.0",
+  "description": "Volto addon for customer satisfaction.",
+  "main": "src/index.js",
+  "repository": "https://github.com/collective/volto-customer-satisfaction.git",
+  "homepage": "https://github.com/collective/volto-customer-satisfaction.git#readme",
+  "bugs": "https://github.com/collective/volto-customer-satisfaction.git/issues",
+  "author": "collective",
+  "license": "MIT",
+  "keywords": [
+    "volto-addon",
+    "volto",
+    "plone",
+    "react"
+  ],
+  "scripts": {
+    "i18n": "NODE_ENV=production node src/i18n.js"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@release-it/conventional-changelog": "^2.0.1",
+    "husky": "^6.0.0",
+    "release-it": "^14.10.1"
+  }
+}
