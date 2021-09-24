@@ -25,3 +25,53 @@ export function resetSubmitCustomerSatisfaction() {
     type: RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION,
   };
 }
+
+/**
+ * EXPORT_CSV_CUSTOMERSATISFACTIONDATA action
+ * @module actions/exportCsvCustomerSatisfactionData
+ */
+export const EXPORT_CSV_CUSTOMERSATISFACTIONDATA =
+  'EXPORT_CSV_CUSTOMERSATISFACTIONDATA';
+
+export function exportCsvCustomerSatisfactionData() {
+  return {
+    type: EXPORT_CSV_CUSTOMERSATISFACTIONDATA,
+    request: {
+      op: 'get',
+      path: '/@customer-satisfaction-csv',
+    },
+  };
+}
+
+/**
+ * DELETE_ALL_CUSTOMERSATISFACTION_FEEDBACKS action
+ * @module actions/deleteAllFeedbacks
+ */
+export const DELETE_ALL_CUSTOMERSATISFACTION_FEEDBACKS =
+  'DELETE_ALL_CUSTOMERSATISFACTION_FEEDBACKS';
+
+export function deleteAllFeedbacks() {
+  return {
+    type: DELETE_ALL_CUSTOMERSATISFACTION_FEEDBACKS,
+    request: {
+      op: 'get',
+      path: '/@customer-satisfaction-clear',
+    },
+  };
+}
+
+/**
+ * GET_CUSTOMER_SATISFACTION action
+ * @module actions/getCustomerSatisfaction
+ */
+export const GET_CUSTOMER_SATISFACTION = 'GET_CUSTOMER_SATISFACTION';
+export function getCustomerSatisfaction(data) {
+  return {
+    type: GET_CUSTOMER_SATISFACTION,
+    request: {
+      op: 'get',
+      path: '/@customer-satisfaction',
+      data,
+    },
+  };
+}

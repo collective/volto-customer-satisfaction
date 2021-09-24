@@ -1,7 +1,19 @@
 import loadable from '@loadable/component';
-import { submitCustomerSatisfaction as submitCustomerSatisfactionReducer } from './reducers';
+import CSToolbar from './components/manage/CSToolbar';
+import CSPanel from './components/manage/CSPanel/CSPanel';
+import {
+  submitCustomerSatisfaction as submitCustomerSatisfactionReducer,
+  exportCsvCustomerSatisfactionData,
+  deleteAllFeedbacks,
+  getCustomerSatisfaction,
+} from './reducers';
 
-export { submitCustomerSatisfaction } from './actions';
+export {
+  submitCustomerSatisfaction,
+  exportCsvCustomerSatisfactionData,
+  deleteAllFeedbacks,
+  getCustomerSatisfaction,
+} from './actions';
 export { default as GoogleReCaptchaWidget } from './components/widgets/GoogleReCaptchaWidget';
 export { default as CustomerSatisfaction } from './components/CustomerSatisfaction/CustomerSatisfaction';
 
@@ -13,7 +25,31 @@ export default function applyConfig(config) {
   config.addonReducers = {
     ...config.addonReducers,
     submitCustomerSatisfaction: submitCustomerSatisfactionReducer,
+    exportCsvCustomerSatisfactionData,
+    deleteAllFeedbacks,
+    getCustomerSatisfaction,
   };
+
+  config.settings.appExtras = [
+    ...config.settings.appExtras,
+    {
+      match: '',
+      component: CSToolbar,
+    },
+  ];
+
+  // config.addonRoutes.push({
+  //   path: '/customer-satisfaction-panel',
+  //   component: CSPanel,
+  // });
+
+  config.addonRoutes = [
+    ...config.addonRoutes,
+    {
+      path: '/customer-satisfaction-panel',
+      component: CSPanel,
+    },
+  ];
 
   return config;
 }

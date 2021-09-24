@@ -1,0 +1,5 @@
+#page-customer-satisfaction .ui.button.labeled i.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

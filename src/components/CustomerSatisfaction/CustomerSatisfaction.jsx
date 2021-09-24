@@ -45,7 +45,7 @@ const messages = defineMessages({
 const CustomerSatisfaction = () => {
   const intl = useIntl();
   const location = useLocation();
-  const path = location.pathname;
+  const path = location.pathname ?? '/';
   const dispatch = useDispatch();
   const [satisfaction, setSatisfaction] = useState(null);
   const [formData, setFormData] = useState({});
@@ -75,7 +75,7 @@ const CustomerSatisfaction = () => {
     setFormData({
       ...formData,
       vote:
-        satisfaction === true ? 'ok' : satisfaction === false ? 'kok' : null,
+        satisfaction === true ? 'ok' : satisfaction === false ? 'nok' : null,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [satisfaction]);
@@ -98,8 +98,12 @@ const CustomerSatisfaction = () => {
     );
   };
 
-  const action =
-    path?.length > 1 ? path.replace('/', '')?.replaceAll('-', '_') : 'homepage';
+  let action = path?.length > 1 ? path.replace(/\//g, '') : path;
+  if (action?.length > 0) {
+    action = action?.replace(/-/g, '_');
+  } else {
+    action = 'homepage';
+  }
 
   return (
     <div className="customer-satisfaction">

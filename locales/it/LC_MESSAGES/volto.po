@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+ #: components/manage/CSToolbar
+msgid "Cutomer satisfaction control panel"
+msgstr "Pannello di controllo Customer Satisfaction"
+
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_no"
 msgstr "No"
