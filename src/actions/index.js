@@ -1,5 +1,7 @@
 export const SUBMIT_CUSTOMER_SATISFACTION_ACTION =
   'SUBMIT_CUSTOMER_SATISFACTION_ACTION';
+export const RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION =
+  'RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION';
 
 /**
  * submitCustomerSatisfaction function
@@ -15,5 +17,11 @@ export function submitCustomerSatisfaction(path = '', data) {
       path: path + '/@customer-satisfaction-add',
       data,
     },
+  };
+}
+
+export function resetSubmitCustomerSatisfaction() {
+  return {
+    type: RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION,
   };
 }

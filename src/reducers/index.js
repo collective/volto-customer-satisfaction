@@ -1,4 +1,7 @@
-import { SUBMIT_CUSTOMER_SATISFACTION_ACTION } from '../actions';
+import {
+  SUBMIT_CUSTOMER_SATISFACTION_ACTION,
+  RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION,
+} from '../actions';
 
 const initialState = {
   error: null,
@@ -38,6 +41,10 @@ export const submitCustomerSatisfaction = (
         error: action.error,
         loaded: false,
         loading: false,
+      };
+    case `${RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION}`:
+      return {
+        ...initialState,
       };
     default:
       return state;

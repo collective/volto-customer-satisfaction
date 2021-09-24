@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useIntl, defineMessages } from 'react-intl';
@@ -7,7 +8,10 @@ import { Icon } from '@plone/volto/components';
 import ThumbsUp from '../../icons/thumbs-up-regular.svg';
 import ThumbsDown from '../../icons/thumbs-down-regular.svg';
 import GoogleReCaptchaWidget from '../widgets/GoogleReCaptchaWidget';
-import { submitCustomerSatisfaction } from '../../actions';
+import {
+  submitCustomerSatisfaction,
+  resetSubmitCustomerSatisfaction,
+} from '../../actions';
 import './customer-satisfaction.css';
 
 const messages = defineMessages({
@@ -49,6 +53,7 @@ const CustomerSatisfaction = () => {
   const submitResults = useSelector(
     (state) => state.submitCustomerSatisfaction,
   );
+  const [validToken, setValidToken] = useState(null);
 
   const changeSatisfaction = (e, s) => {
     e.stopPropagation();
@@ -60,6 +65,11 @@ const CustomerSatisfaction = () => {
       setSatisfaction(s);
     }
   };
+  useEffect(() => {
+    return () => {
+      dispatch(resetSubmitCustomerSatisfaction());
+    };
+  }, []);
 
   useEffect(() => {
     setFormData({
@@ -70,24 +80,27 @@ const CustomerSatisfaction = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [satisfaction]);
 
-  let validToken = useRef('');
   const onVerifyCaptcha = useCallback(
     (token) => {
-      validToken.current = token;
+      if (satisfaction != null && !validToken) {
+        setValidToken(token);
+      }
     },
-    [validToken],
+    [satisfaction, setValidToken, validToken],
   );
 
-  const sendFormData = () => {
-    console.log({
-      validToken: validToken,
-      formData: formData,
-    });
+  // const onVerifyCaptcha = useCallback(
+  //   (token) => {
+  //     setValidToken(token);
+  //   },
+  //   [setValidToken, path],
+  // );
 
+  const sendFormData = () => {
     dispatch(
       submitCustomerSatisfaction(path, {
         ...formData,
-        'g-recaptcha-response': validToken.current,
+        'g-recaptcha-response': validToken,
       }),
     );
   };
@@ -162,14 +175,22 @@ const CustomerSatisfaction = () => {
                 }}
               />
             </div>
-            <GoogleReCaptchaWidget onVerify={onVerifyCaptcha} />
+
+            <GoogleReCaptchaWidget
+              key={path}
+              onVerify={onVerifyCaptcha}
+              action={path
+                .replace(/[^A-Za-z0-9 -]/g, '')
+                .replaceAll('-', '')
+                .replaceAll('_', '')}
+            />
 
             <div className="submit-wrapper">
               <Button
                 type="submit"
                 content={intl.formatMessage(messages.submit)}
                 primary
-                disabled={captcha && !validToken?.current}
+                disabled={captcha && !validToken}
               />
             </div>
           </div>
