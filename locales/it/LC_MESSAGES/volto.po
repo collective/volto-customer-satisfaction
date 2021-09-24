@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
- #: components/CustomerSatisfaction/CustomerSatisfaction
+#: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_no"
 msgstr "No"
 
