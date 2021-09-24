@@ -89,13 +89,6 @@ const CustomerSatisfaction = () => {
     [satisfaction, setValidToken, validToken],
   );
 
-  // const onVerifyCaptcha = useCallback(
-  //   (token) => {
-  //     setValidToken(token);
-  //   },
-  //   [setValidToken, path],
-  // );
-
   const sendFormData = () => {
     dispatch(
       submitCustomerSatisfaction(path, {
@@ -104,6 +97,14 @@ const CustomerSatisfaction = () => {
       }),
     );
   };
+
+  const action =
+    path?.length > 1
+      ? path
+          .replace(/[^A-Za-z0-9 -]/g, '')
+          .replaceAll('-', '')
+          .replaceAll('_', '')
+      : null;
 
   return (
     <div className="customer-satisfaction">
@@ -177,12 +178,9 @@ const CustomerSatisfaction = () => {
             </div>
 
             <GoogleReCaptchaWidget
-              key={path}
+              key={action}
               onVerify={onVerifyCaptcha}
-              action={path
-                .replace(/[^A-Za-z0-9 -]/g, '')
-                .replaceAll('-', '')
-                .replaceAll('_', '')}
+              action={action}
             />
 
             <div className="submit-wrapper">

@@ -10,3 +10,27 @@ msgstr ""
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+ #: components/CustomerSatisfaction/CustomerSatisfaction
+msgid "customer_satisfaction_no"
+msgstr "No"
+
+#: components/CustomerSatisfaction/CustomerSatisfaction
+msgid "customer_satisfaction_submit"
+msgstr "Invia il tuo commento"
+
+#: components/CustomerSatisfaction/CustomerSatisfaction
+msgid "customer_satisfaction_suggestions_placeholder"
+msgstr "Spiegaci perchè, e aiutaci a migliorare il servizio"
+
+#: components/CustomerSatisfaction/CustomerSatisfaction
+msgid "customer_satisfaction_thank_you"
+msgstr "Grazie per il tuo feedback!"
+
+#: components/CustomerSatisfaction/CustomerSatisfaction
+msgid "customer_satisfaction_title"
+msgstr "Questa pagina ti è stata utile?"
+
+#: components/CustomerSatisfaction/CustomerSatisfaction
+msgid "customer_satisfaction_yes"
+msgstr "Sì"
