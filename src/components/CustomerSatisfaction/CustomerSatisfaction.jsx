@@ -99,12 +99,7 @@ const CustomerSatisfaction = () => {
   };
 
   const action =
-    path?.length > 1
-      ? path
-          .replace(/[^A-Za-z0-9 -]/g, '')
-          .replaceAll('-', '')
-          .replaceAll('_', '')
-      : null;
+    path?.length > 1 ? path.replace('/', '')?.replaceAll('-', '_') : 'homepage';
 
   return (
     <div className="customer-satisfaction">
