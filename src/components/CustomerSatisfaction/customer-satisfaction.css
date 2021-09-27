@@ -1,0 +1,30 @@
+.customer-satisfaction {
+    margin: 1rem 0;
+}
+
+.customer-satisfaction .buttons .ui.button {
+    min-height: 3.5rem;
+}
+
+.customer-satisfaction .comment {
+    margin: 1rem 0;
+}
+
+.customer-satisfaction .ui.form .comment textarea {
+    height: 6rem;
+}
+
+.customer-satisfaction .submit-wrapper {
+    margin: 2rem 0;
+}
+
+.customer-satisfaction #cs-more {
+    overflow: hidden;
+    max-height: 0;
+
+    transition: 0.6s max-height ease;
+}
+
+.customer-satisfaction #cs-more[aria-expanded='true'] {
+    max-height: 800px;
+}

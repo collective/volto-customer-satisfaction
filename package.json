@@ -29,5 +29,8 @@
     "@release-it/conventional-changelog": "^2.0.1",
     "husky": "^6.0.0",
     "release-it": "^14.10.1"
+  },
+  "dependencies": {
+    "react-google-recaptcha-v3": "1.9.5"
   }
 }
