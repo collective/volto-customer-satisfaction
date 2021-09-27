@@ -11,12 +11,84 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
- #: components/manage/CSToolbar
+ #: components/manage/CSPanel/CSPanel
+msgid "Customer satisfaction"
+msgstr ""
+
+#: components/manage/CSToolbar
 msgid "Cutomer satisfaction control panel"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_all"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_close_comments"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comment"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comment_date"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_comments"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanelMenu
+msgid "customer_satisfaction_confirm_delete_all"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_confirm_delete_selected"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanelMenu
+msgid "customer_satisfaction_delete_all"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanelMenu
+msgid "customer_satisfaction_export_csv"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_filter_title"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_items_selected"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_last_vote"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_negative_votes"
 msgstr ""
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_no"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_page"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_positive_votes"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_reset_feedbacks"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_select_item"
 msgstr ""
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
@@ -33,6 +105,10 @@ msgstr ""
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_title"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_vote"
 msgstr ""
 
 #: components/CustomerSatisfaction/CustomerSatisfaction

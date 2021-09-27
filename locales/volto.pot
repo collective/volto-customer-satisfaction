@@ -1,7 +1,7 @@
 msgid ""
  msgstr ""
  "Project-Id-Version: Plone\n"
- "POT-Creation-Date: 2021-09-24T13:16:26.638Z\n"
+ "POT-Creation-Date: 2021-09-27T14:32:47.577Z\n"
  "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
  "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
@@ -13,14 +13,104 @@ msgid ""
  "Preferred-Encodings: utf-8\n"
  "Domain: volto\n"
 
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Customer satisfaction
+msgid "Customer satisfaction"
+msgstr ""
+
 #: components/manage/CSToolbar
 # defaultMessage: Customer satisfaction control panel
 msgid "Cutomer satisfaction control panel"
 msgstr ""
 
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: All
+msgid "customer_satisfaction_all"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+# defaultMessage: Close
+msgid "customer_satisfaction_close_comments"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+# defaultMessage: Comment
+msgid "customer_satisfaction_comment"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+# defaultMessage: Date
+msgid "customer_satisfaction_comment_date"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Comments
+msgid "customer_satisfaction_comments"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanelMenu
+# defaultMessage: Are you sure you want to delete all feedbacks?
+msgid "customer_satisfaction_confirm_delete_all"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Are you sure you want to reset this page's feedbacks?
+msgid "customer_satisfaction_confirm_delete_selected"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanelMenu
+# defaultMessage: Delete all feedbacks
+msgid "customer_satisfaction_delete_all"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanelMenu
+# defaultMessage: Export in CSV
+msgid "customer_satisfaction_export_csv"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Filter title
+msgid "customer_satisfaction_filter_title"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: items selected.
+msgid "customer_satisfaction_items_selected"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Last vote
+msgid "customer_satisfaction_last_vote"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Negative votes
+msgid "customer_satisfaction_negative_votes"
+msgstr ""
+
 #: components/CustomerSatisfaction/CustomerSatisfaction
 # defaultMessage: No
 msgid "customer_satisfaction_no"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Page
+msgid "customer_satisfaction_page"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Positive votes
+msgid "customer_satisfaction_positive_votes"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Reset feedbacks
+msgid "customer_satisfaction_reset_feedbacks"
+msgstr ""
+
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Select item
+msgid "customer_satisfaction_select_item"
 msgstr ""
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
@@ -41,6 +131,11 @@ msgstr ""
 #: components/CustomerSatisfaction/CustomerSatisfaction
 # defaultMessage: Was this page useful to you?
 msgid "customer_satisfaction_title"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+# defaultMessage: Vote
+msgid "customer_satisfaction_vote"
 msgstr ""
 
 #: components/CustomerSatisfaction/CustomerSatisfaction

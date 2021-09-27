@@ -11,13 +11,85 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
- #: components/manage/CSToolbar
+ #: components/manage/CSPanel/CSPanel
+msgid "Customer satisfaction"
+msgstr "Customer satisfaction"
+
+#: components/manage/CSToolbar
 msgid "Cutomer satisfaction control panel"
 msgstr "Pannello di controllo Customer Satisfaction"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_all"
+msgstr "Tutti"
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_close_comments"
+msgstr "Chiudi la finestra dei commenti"
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comment"
+msgstr "Commento"
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comment_date"
+msgstr "Data"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_comments"
+msgstr "Commenti"
+
+#: components/manage/CSPanel/CSPanelMenu
+msgid "customer_satisfaction_confirm_delete_all"
+msgstr "Sei sicuro di voler eliminare tutti i feedback?"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_confirm_delete_selected"
+msgstr "Sei sicuro di volere resettare i feedback delle pagine selezionate?"
+
+#: components/manage/CSPanel/CSPanelMenu
+msgid "customer_satisfaction_delete_all"
+msgstr "Cancella tutti i feedback"
+
+#: components/manage/CSPanel/CSPanelMenu
+msgid "customer_satisfaction_export_csv"
+msgstr "Esporta in CSV"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_filter_title"
+msgstr "Filtra per titolo"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_items_selected"
+msgstr "elementi selezionati."
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_last_vote"
+msgstr "Ultimo feedback"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_negative_votes"
+msgstr "Feedback negativi"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_no"
 msgstr "No"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_page"
+msgstr "Pagina"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_positive_votes"
+msgstr "Feedback positivi"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_reset_feedbacks"
+msgstr "Reset feedbacks"
+
+#: components/manage/CSPanel/CSPanel
+msgid "customer_satisfaction_select_item"
+msgstr "Seleziona l'elemento"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_submit"
@@ -34,6 +106,10 @@ msgstr "Grazie per il tuo feedback!"
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_title"
 msgstr "Questa pagina ti è stata utile?"
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_vote"
+msgstr "Feddback"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_yes"
