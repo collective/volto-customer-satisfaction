@@ -4,12 +4,14 @@ import {
   EXPORT_CSV_CUSTOMERSATISFACTIONDATA,
   DELETE_ALL_CUSTOMERSATISFACTION_FEEDBACKS,
   GET_CUSTOMER_SATISFACTION,
+  DELETE_FEEDBACKS,
 } from '../actions';
 
 const initialState = {
   error: null,
   loaded: false,
   loading: false,
+  subrequests: {},
 };
 
 /**
@@ -185,6 +187,84 @@ export const getCustomerSatisfaction = (state = initialState, action = {}) => {
         loaded: true,
         loading: false,
       };
+    default:
+      return state;
+  }
+};
+function getRequestKey(actionType) {
+  return actionType.split('_')[0].toLowerCase();
+}
+
+export const deleteFeedbacks = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case `${DELETE_FEEDBACKS}_PENDING`:
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                ...(state.subrequests[action.subrequest] || {
+                  data: null,
+                }),
+                loaded: false,
+                loading: true,
+                error: null,
+              },
+            },
+          }
+        : {
+            ...state,
+            [getRequestKey(action.type)]: {
+              loading: true,
+              loaded: false,
+              error: null,
+            },
+          };
+    case `${DELETE_FEEDBACKS}_SUCCESS`:
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                loading: false,
+                loaded: true,
+                error: null,
+              },
+            },
+          }
+        : {
+            ...state,
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: true,
+              error: null,
+            },
+          };
+    case `${DELETE_FEEDBACKS}_FAIL`:
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                data: null,
+                loading: false,
+                loaded: false,
+                error: action.error,
+              },
+            },
+          }
+        : {
+            ...state,
+            data: null,
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: false,
+              error: action.error,
+            },
+          };
     default:
       return state;
   }

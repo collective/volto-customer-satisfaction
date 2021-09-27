@@ -6,6 +6,7 @@ import {
   exportCsvCustomerSatisfactionData,
   deleteAllFeedbacks,
   getCustomerSatisfaction,
+  deleteFeedbacks,
 } from './reducers';
 
 export {
@@ -13,6 +14,7 @@ export {
   exportCsvCustomerSatisfactionData,
   deleteAllFeedbacks,
   getCustomerSatisfaction,
+  deleteFeedbacks,
 } from './actions';
 export { default as GoogleReCaptchaWidget } from './components/widgets/GoogleReCaptchaWidget';
 export { default as CustomerSatisfaction } from './components/CustomerSatisfaction/CustomerSatisfaction';
@@ -28,6 +30,7 @@ export default function applyConfig(config) {
     exportCsvCustomerSatisfactionData,
     deleteAllFeedbacks,
     getCustomerSatisfaction,
+    deleteFeedbacks,
   };
 
   config.settings.appExtras = [

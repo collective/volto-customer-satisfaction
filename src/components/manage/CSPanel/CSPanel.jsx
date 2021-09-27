@@ -3,23 +3,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Container,
   Segment,
-  Menu,
+  Checkbox,
   Button,
   Table,
   Loader,
+  Form,
+  Input,
+  Message,
 } from 'semantic-ui-react';
 import { Pagination } from '@plone/volto/components';
 import { Helmet } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
-import { Icon } from '@plone/volto/components';
-import downloadSVG from '@plone/volto/icons/download.svg';
-import trashSVG from '@plone/volto/icons/delete.svg';
 
-import {
-  exportCsvCustomerSatisfactionData,
-  deleteAllFeedbacks,
-  getCustomerSatisfaction,
-} from '../../../actions';
+import Comments from './Comments';
+import moment from 'moment';
+
+import { getCustomerSatisfaction, deleteFeedbacks } from '../../../actions';
+import CSPanelMenu from './CSPanelMenu';
 import './cs-panel.css';
 
 const messages = defineMessages({
@@ -27,17 +27,10 @@ const messages = defineMessages({
     id: 'Customer satisfaction',
     defaultMessage: 'Customer satisfaction',
   },
-  export_csv: {
-    id: 'customer_satisfaction_export_csv',
-    defaultMessage: 'Export in CSV',
-  },
-  delete_all: {
-    id: 'customer_satisfaction_delete_all',
-    defaultMessage: 'Delete all feedbacks',
-  },
-  confirm_delete_all: {
-    id: 'customer_satisfaction_confirm_delete_all',
-    defaultMessage: 'Are you sure you want to delete all feedbacks?',
+
+  select_item: {
+    id: 'customer_satisfaction_select_item',
+    defaultMessage: 'Select item',
   },
   all: {
     id: 'customer_satisfaction_all',
@@ -63,32 +56,104 @@ const messages = defineMessages({
     id: 'customer_satisfaction_comments',
     defaultMessage: 'Comments',
   },
+  filter_title: {
+    id: 'customer_satisfaction_filter_title',
+    defaultMessage: 'Filter title',
+  },
+  items_selected: {
+    id: 'customer_satisfaction_items_selected',
+    defaultMessage: 'items selected.',
+  },
+  reset_feedbacks: {
+    id: 'customer_satisfaction_reset_feedbacks',
+    defaultMessage: 'Reset feedbacks',
+  },
+  confirm_delete_selected: {
+    id: 'customer_satisfaction_confirm_delete_selected',
+    defaultMessage: "Are you sure you want to reset this page's feedbacks?",
+  },
 });
 const CSPanel = () => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const b_size = 50;
+  const [b_size, setB_size] = useState(50);
 
   const [sort_on, setSort_on] = useState('last_vote');
   const [sort_order, setSort_order] = useState('descending');
 
   const [currentPage, setCurrentPage] = useState(0);
 
+  const [searchableText, setSearchableText] = useState('');
+  const [text, setText] = useState('');
+
+  const [itemsSelected, setItemsSelected] = useState([]);
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      setText(searchableText);
+      // Send Axios request here
+    }, 1200);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchableText]);
+
+  const [viewComments, setViewComments] = useState(null);
   const customerSatisfaction = useSelector(
     (state) => state.getCustomerSatisfaction,
   );
-  console.log(customerSatisfaction);
-  useEffect(() => {
-    dispatch(
+
+  const doSearch = () => {
+    return dispatch(
       getCustomerSatisfaction({
         b_size,
-        b_start: currentPage * b_size - 1,
+        b_start: currentPage * b_size,
         sort_on,
         sort_order,
+        text: text && text.length > 0 ? text + '*' : null,
       }),
     );
-  }, [dispatch, b_size, currentPage, sort_order, sort_on]);
+  };
+
+  useEffect(() => {
+    doSearch();
+  }, [dispatch, b_size, currentPage, sort_order, sort_on, text]);
+
+  const changeSort = (column) => {
+    if (sort_on === column) {
+      if (sort_order === 'ascending') {
+        setSort_order('descending');
+      } else {
+        setSort_order('ascending');
+      }
+    } else {
+      setSort_on(column);
+    }
+  };
+
+  const resetFeedbacks = (items) => {
+    let items_titles = '';
+    items.forEach((i) => {
+      items_titles += i.title + '\n';
+    });
+
+    if (
+      // eslint-disable-next-line no-alert
+      window.confirm(
+        intl.formatMessage(messages.confirm_delete_selected) +
+          '\n' +
+          items_titles,
+      )
+    ) {
+      // eslint-disable-next-line no-unused-expressions
+      items?.forEach((item) => {
+        dispatch(deleteFeedbacks(item));
+      });
+      doSearch().then(() => {
+        setItemsSelected([]);
+      });
+    }
+  };
 
   return (
     <Container
@@ -101,65 +166,71 @@ const CSPanel = () => {
           {intl.formatMessage(messages.cs_controlpanel)}
         </Segment>
 
-        <Menu secondary>
-          <Menu.Item>
-            <Button
-              primary
-              icon
-              labelPosition="right"
-              onClick={() => {
-                dispatch(exportCsvCustomerSatisfactionData());
-              }}
-            >
-              {intl.formatMessage(messages.export_csv)}
-              <i className="icon">
-                <Icon name={downloadSVG} size="20px" />
-              </i>
-            </Button>
-          </Menu.Item>
+        <CSPanelMenu />
 
-          <Menu.Menu position="right">
-            <Menu.Item>
-              <Button
-                color="red"
-                icon
-                labelPosition="right"
-                onClick={() => {
-                  if (
-                    // eslint-disable-next-line no-alert
-                    window.confirm(
-                      intl.formatMessage(messages.confirm_delete_all),
-                    )
-                  ) {
-                    dispatch(deleteAllFeedbacks());
-                  }
-                }}
-              >
-                {intl.formatMessage(messages.delete_all)}
-                <i className="icon">
-                  <Icon name={trashSVG} size="20px" />
-                </i>
-              </Button>
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu>
         <Segment>
+          {itemsSelected.length > 0 && (
+            <Message className="selected-items" color="teal">
+              <div className="text">
+                {itemsSelected?.length}{' '}
+                {intl.formatMessage(messages.items_selected)}
+              </div>
+              <div className="actions">
+                <Button
+                  color="red"
+                  onClick={() => {
+                    resetFeedbacks(itemsSelected);
+                  }}
+                >
+                  {intl.formatMessage(messages.reset_feedbacks)}
+                </Button>
+              </div>
+            </Message>
+          )}
           {customerSatisfaction.loading && <Loader active inline="centered" />}
-          {customerSatisfaction.loaded && (
+          {customerSatisfaction.loaded && !customerSatisfaction.error && (
             <>
-              <Table selectable compact singleLine attached>
+              <Form className="search-form">
+                <Input
+                  fluid
+                  icon="search"
+                  value={searchableText}
+                  onChange={(e) => {
+                    setSearchableText(e.target.value);
+                  }}
+                  placeholder={intl.formatMessage(messages.filter_title)}
+                />
+              </Form>
+              <Table selectable compact singleLine attached sortable fixed>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>
+                    <Table.HeaderCell width={1}></Table.HeaderCell>
+                    <Table.HeaderCell
+                      sorted={sort_on === 'title' ? sort_order : null}
+                      onClick={() => changeSort('title')}
+                      width={4}
+                    >
                       {intl.formatMessage(messages.page)}
                     </Table.HeaderCell>
-                    <Table.HeaderCell textAlign="center">
+                    <Table.HeaderCell
+                      sorted={sort_on === 'ok' ? sort_order : null}
+                      onClick={() => changeSort('ok')}
+                      textAlign="center"
+                    >
                       {intl.formatMessage(messages.positive_votes)}
                     </Table.HeaderCell>
-                    <Table.HeaderCell textAlign="center">
+                    <Table.HeaderCell
+                      sorted={sort_on === 'nok' ? sort_order : null}
+                      onClick={() => changeSort('nok')}
+                      textAlign="center"
+                    >
                       {intl.formatMessage(messages.negative_votes)}
                     </Table.HeaderCell>
-                    <Table.HeaderCell textAlign="center">
+                    <Table.HeaderCell
+                      sorted={sort_on === 'last_vote' ? sort_order : null}
+                      onClick={() => changeSort('last_vote')}
+                      textAlign="center"
+                    >
                       {intl.formatMessage(messages.last_vote)}
                     </Table.HeaderCell>
                     <Table.HeaderCell textAlign="center">
@@ -168,16 +239,54 @@ const CSPanel = () => {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {customerSatisfaction.result.items?.map((item) => (
+                  {customerSatisfaction.result?.items?.map((item) => (
                     <tr key={item.uid}>
-                      <Table.Cell>{item.title}</Table.Cell>
+                      <Table.Cell>
+                        <Checkbox
+                          toggle
+                          title={intl.formatMessage(messages.select_item)}
+                          label={intl.formatMessage(messages.select_item)}
+                          onChange={(e, o) => {
+                            if (o.checked) {
+                              let s = [...itemsSelected];
+                              s.push(item);
+                              setItemsSelected(s);
+                            } else {
+                              setItemsSelected(
+                                itemsSelected.filter((i) => i.url !== item.url),
+                              );
+                            }
+                          }}
+                        />
+                      </Table.Cell>
+                      <Table.Cell>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          {item.title}
+                        </a>
+                      </Table.Cell>
                       <Table.Cell textAlign="center">{item.ok}</Table.Cell>
                       <Table.Cell textAlign="center">{item.nok}</Table.Cell>
                       <Table.Cell textAlign="center">
-                        {item.last_vote}
+                        {moment(item.last_vote).format('DD/MM/YYYY HH:mm:ss')}
                       </Table.Cell>
-                      <Table.Cell textAlign="center">
-                        {item.comments?.length > 0 ? item.comments.length : ''}
+                      <Table.Cell
+                        textAlign="center"
+                        className="comments-column"
+                      >
+                        {item.comments?.length > 0 && (
+                          <Button
+                            size="mini"
+                            onClick={() => {
+                              setViewComments(item);
+                            }}
+                          >
+                            {item.comments.length}
+                          </Button>
+                        )}
                       </Table.Cell>
                     </tr>
                   ))}
@@ -187,15 +296,25 @@ const CSPanel = () => {
               <div className="contents-pagination">
                 <Pagination
                   current={currentPage}
-                  total={Math.ceil(customerSatisfaction.total / b_size)}
+                  total={Math.ceil(
+                    customerSatisfaction?.result?.items_total / b_size,
+                  )}
                   pageSize={b_size}
-                  onChangePage={(p) => {
-                    setCurrentPage(p);
+                  pageSizes={[50, intl.formatMessage(messages.all)]}
+                  onChangePage={(e, p) => {
+                    setCurrentPage(p.value);
                   }}
+                  onChangePageSize={(e, s) => setB_size(s.value)}
                 />
               </div>
             </>
           )}
+          <Comments
+            item={viewComments}
+            onClose={() => {
+              setViewComments(null);
+            }}
+          />
         </Segment>
       </Segment.Group>
     </Container>

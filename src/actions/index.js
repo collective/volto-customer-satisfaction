@@ -71,7 +71,23 @@ export function getCustomerSatisfaction(data) {
     request: {
       op: 'get',
       path: '/@customer-satisfaction',
-      data,
+      params: data,
+    },
+  };
+}
+
+/**
+ * DELETE_FEEDBACKS action
+ * @module actions/getCustomerSatisfaction
+ */
+export const DELETE_FEEDBACKS = 'DELETE_FEEDBACKS';
+export function deleteFeedbacks(item) {
+  return {
+    type: DELETE_FEEDBACKS,
+    subrequest: item.uid,
+    request: {
+      op: 'del',
+      path: '/@customer-satisfaction-delete/' + item.uid,
     },
   };
 }
