@@ -1,3 +1,10 @@
+### [0.2.2](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.1...v0.2.2) (2021-09-28)
+
+
+### Bug Fixes
+
+* fix comments remove filters button ([712196a](https://github.com/collective/volto-customer-satisfaction/commit/712196a0c5fb473aeddcc4734ccf41dd0efc1e3a))
+
 ### [0.2.1](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.0...v0.2.1) (2021-09-28)
 
 
