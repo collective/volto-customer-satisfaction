@@ -39,6 +39,18 @@ msgstr ""
 msgid "customer_satisfaction_comments"
 msgstr ""
 
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comments_filter"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comments_negative_votes"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comments_positive_votes"
+msgstr ""
+
 #: components/manage/CSPanel/CSPanelMenu
 msgid "customer_satisfaction_confirm_delete_all"
 msgstr ""
@@ -105,10 +117,6 @@ msgstr ""
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_title"
-msgstr ""
-
-#: components/manage/CSPanel/Comments
-msgid "customer_satisfaction_vote"
 msgstr ""
 
 #: components/CustomerSatisfaction/CustomerSatisfaction

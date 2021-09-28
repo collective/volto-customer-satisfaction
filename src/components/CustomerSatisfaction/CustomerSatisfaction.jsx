@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useIntl, defineMessages } from 'react-intl';
 import { Form, Button, TextArea, Loader, Message } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
+import { isCmsUi } from '@plone/volto/helpers';
 import ThumbsUp from '../../icons/thumbs-up-regular.svg';
 import ThumbsDown from '../../icons/thumbs-down-regular.svg';
 import GoogleReCaptchaWidget from '../widgets/GoogleReCaptchaWidget';
@@ -65,6 +66,7 @@ const CustomerSatisfaction = () => {
       setSatisfaction(s);
     }
   };
+
   useEffect(() => {
     return () => {
       dispatch(resetSubmitCustomerSatisfaction());
@@ -103,6 +105,10 @@ const CustomerSatisfaction = () => {
     action = action?.replace(/-/g, '_');
   } else {
     action = 'homepage';
+  }
+
+  if (isCmsUi(path)) {
+    return;
   }
 
   return (

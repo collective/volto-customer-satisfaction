@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
- #: components/manage/CSPanel/CSPanel
+#: components/manage/CSPanel/CSPanel
 msgid "Customer satisfaction"
 msgstr "Customer satisfaction"
 
@@ -25,7 +25,7 @@ msgstr "Tutti"
 
 #: components/manage/CSPanel/Comments
 msgid "customer_satisfaction_close_comments"
-msgstr "Chiudi la finestra dei commenti"
+msgstr "Chiudi"
 
 #: components/manage/CSPanel/Comments
 msgid "customer_satisfaction_comment"
@@ -38,6 +38,18 @@ msgstr "Data"
 #: components/manage/CSPanel/CSPanel
 msgid "customer_satisfaction_comments"
 msgstr "Commenti"
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comments_filter"
+msgstr "Filtra"
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comments_negative_votes"
+msgstr "Feedback negativi"
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comments_positive_votes"
+msgstr "Feedback positivi"
 
 #: components/manage/CSPanel/CSPanelMenu
 msgid "customer_satisfaction_confirm_delete_all"
@@ -69,7 +81,7 @@ msgstr "Ultimo feedback"
 
 #: components/manage/CSPanel/CSPanel
 msgid "customer_satisfaction_negative_votes"
-msgstr "Feedback negativi"
+msgstr "Negativi"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_no"
@@ -81,7 +93,7 @@ msgstr "Pagina"
 
 #: components/manage/CSPanel/CSPanel
 msgid "customer_satisfaction_positive_votes"
-msgstr "Feedback positivi"
+msgstr "Positivi"
 
 #: components/manage/CSPanel/CSPanel
 msgid "customer_satisfaction_reset_feedbacks"
@@ -106,10 +118,6 @@ msgstr "Grazie per il tuo feedback!"
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_title"
 msgstr "Questa pagina ti è stata utile?"
-
-#: components/manage/CSPanel/Comments
-msgid "customer_satisfaction_vote"
-msgstr "Feddback"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
 msgid "customer_satisfaction_yes"

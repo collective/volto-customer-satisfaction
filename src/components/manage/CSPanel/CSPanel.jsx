@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Portal } from 'react-portal';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import {
   Container,
   Segment,
@@ -11,7 +13,7 @@ import {
   Input,
   Message,
 } from 'semantic-ui-react';
-import { Pagination } from '@plone/volto/components';
+import { Pagination, Toolbar } from '@plone/volto/components';
 import { Helmet } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -76,7 +78,8 @@ const messages = defineMessages({
 const CSPanel = () => {
   const intl = useIntl();
   const dispatch = useDispatch();
-
+  const location = useLocation();
+  const pathname = location.pathname ?? '/';
   const [b_size, setB_size] = useState(50);
 
   const [sort_on, setSort_on] = useState('last_vote');
@@ -86,6 +89,7 @@ const CSPanel = () => {
 
   const [searchableText, setSearchableText] = useState('');
   const [text, setText] = useState('');
+  const [isClient, setIsClient] = useState(false);
 
   const [itemsSelected, setItemsSelected] = useState([]);
 
@@ -103,6 +107,10 @@ const CSPanel = () => {
     (state) => state.getCustomerSatisfaction,
   );
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const doSearch = () => {
     return dispatch(
       getCustomerSatisfaction({
@@ -117,7 +125,8 @@ const CSPanel = () => {
 
   useEffect(() => {
     doSearch();
-  }, [dispatch, b_size, currentPage, sort_order, sort_on, text]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [b_size, currentPage, sort_order, sort_on, text]);
 
   const changeSort = (column) => {
     if (sort_on === column) {
@@ -156,168 +165,180 @@ const CSPanel = () => {
   };
 
   return (
-    <Container
-      id="page-customer-satisfaction"
-      className="controlpanel-customer-satisfaction"
-    >
-      <Helmet title={intl.formatMessage(messages.cs_controlpanel)} />
-      <Segment.Group raised>
-        <Segment className="primary">
-          {intl.formatMessage(messages.cs_controlpanel)}
-        </Segment>
+    <>
+      <Container
+        id="page-customer-satisfaction"
+        className="controlpanel-customer-satisfaction"
+      >
+        <Helmet title={intl.formatMessage(messages.cs_controlpanel)} />
+        <Segment.Group raised>
+          <Segment className="primary">
+            {intl.formatMessage(messages.cs_controlpanel)}
+          </Segment>
 
-        <CSPanelMenu />
+          <CSPanelMenu />
 
-        <Segment>
-          {itemsSelected.length > 0 && (
-            <Message className="selected-items" color="teal">
-              <div className="text">
-                {itemsSelected?.length}{' '}
-                {intl.formatMessage(messages.items_selected)}
-              </div>
-              <div className="actions">
-                <Button
-                  color="red"
-                  onClick={() => {
-                    resetFeedbacks(itemsSelected);
-                  }}
-                >
-                  {intl.formatMessage(messages.reset_feedbacks)}
-                </Button>
-              </div>
-            </Message>
-          )}
-          {customerSatisfaction.loading && <Loader active inline="centered" />}
-          {customerSatisfaction.loaded && !customerSatisfaction.error && (
-            <>
-              <Form className="search-form">
-                <Input
-                  fluid
-                  icon="search"
-                  value={searchableText}
-                  onChange={(e) => {
-                    setSearchableText(e.target.value);
-                  }}
-                  placeholder={intl.formatMessage(messages.filter_title)}
-                />
-              </Form>
-              <Table selectable compact singleLine attached sortable fixed>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell width={1}></Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={sort_on === 'title' ? sort_order : null}
-                      onClick={() => changeSort('title')}
-                      width={4}
-                    >
-                      {intl.formatMessage(messages.page)}
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={sort_on === 'ok' ? sort_order : null}
-                      onClick={() => changeSort('ok')}
-                      textAlign="center"
-                    >
-                      {intl.formatMessage(messages.positive_votes)}
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={sort_on === 'nok' ? sort_order : null}
-                      onClick={() => changeSort('nok')}
-                      textAlign="center"
-                    >
-                      {intl.formatMessage(messages.negative_votes)}
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={sort_on === 'last_vote' ? sort_order : null}
-                      onClick={() => changeSort('last_vote')}
-                      textAlign="center"
-                    >
-                      {intl.formatMessage(messages.last_vote)}
-                    </Table.HeaderCell>
-                    <Table.HeaderCell textAlign="center">
-                      {intl.formatMessage(messages.comments)}
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {customerSatisfaction.result?.items?.map((item) => (
-                    <tr key={item.uid}>
-                      <Table.Cell>
-                        <Checkbox
-                          toggle
-                          title={intl.formatMessage(messages.select_item)}
-                          label={intl.formatMessage(messages.select_item)}
-                          onChange={(e, o) => {
-                            if (o.checked) {
-                              let s = [...itemsSelected];
-                              s.push(item);
-                              setItemsSelected(s);
-                            } else {
-                              setItemsSelected(
-                                itemsSelected.filter((i) => i.url !== item.url),
-                              );
-                            }
-                          }}
-                        />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                        >
-                          {item.title}
-                        </a>
-                      </Table.Cell>
-                      <Table.Cell textAlign="center">{item.ok}</Table.Cell>
-                      <Table.Cell textAlign="center">{item.nok}</Table.Cell>
-                      <Table.Cell textAlign="center">
-                        {moment(item.last_vote).format('DD/MM/YYYY HH:mm:ss')}
-                      </Table.Cell>
-                      <Table.Cell
-                        textAlign="center"
-                        className="comments-column"
+          <Segment>
+            {itemsSelected.length > 0 && (
+              <Message className="selected-items" color="teal">
+                <div className="text">
+                  {itemsSelected?.length}{' '}
+                  {intl.formatMessage(messages.items_selected)}
+                </div>
+                <div className="actions">
+                  <Button
+                    color="red"
+                    onClick={() => {
+                      resetFeedbacks(itemsSelected);
+                    }}
+                  >
+                    {intl.formatMessage(messages.reset_feedbacks)}
+                  </Button>
+                </div>
+              </Message>
+            )}
+            {customerSatisfaction.loading && (
+              <Loader active inline="centered" />
+            )}
+            {customerSatisfaction.loaded && !customerSatisfaction.error && (
+              <>
+                <Form className="search-form">
+                  <Input
+                    fluid
+                    icon="search"
+                    value={searchableText}
+                    onChange={(e) => {
+                      setSearchableText(e.target.value);
+                    }}
+                    placeholder={intl.formatMessage(messages.filter_title)}
+                  />
+                </Form>
+                <Table selectable compact singleLine attached sortable fixed>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell width={1}></Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={sort_on === 'title' ? sort_order : null}
+                        onClick={() => changeSort('title')}
+                        width={4}
                       >
-                        {item.comments?.length > 0 && (
-                          <Button
-                            size="mini"
-                            onClick={() => {
-                              setViewComments(item);
+                        {intl.formatMessage(messages.page)}
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={sort_on === 'ok' ? sort_order : null}
+                        onClick={() => changeSort('ok')}
+                        textAlign="center"
+                      >
+                        {intl.formatMessage(messages.positive_votes)}
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={sort_on === 'nok' ? sort_order : null}
+                        onClick={() => changeSort('nok')}
+                        textAlign="center"
+                      >
+                        {intl.formatMessage(messages.negative_votes)}
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={sort_on === 'last_vote' ? sort_order : null}
+                        onClick={() => changeSort('last_vote')}
+                        textAlign="center"
+                        width={3}
+                      >
+                        {intl.formatMessage(messages.last_vote)}
+                      </Table.HeaderCell>
+                      <Table.HeaderCell textAlign="center">
+                        {intl.formatMessage(messages.comments)}
+                      </Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>
+                    {customerSatisfaction.result?.items?.map((item) => (
+                      <tr key={item.uid}>
+                        <Table.Cell>
+                          <Checkbox
+                            toggle
+                            title={intl.formatMessage(messages.select_item)}
+                            label={intl.formatMessage(messages.select_item)}
+                            onChange={(e, o) => {
+                              if (o.checked) {
+                                let s = [...itemsSelected];
+                                s.push(item);
+                                setItemsSelected(s);
+                              } else {
+                                setItemsSelected(
+                                  itemsSelected.filter(
+                                    (i) => i.url !== item.url,
+                                  ),
+                                );
+                              }
                             }}
+                          />
+                        </Table.Cell>
+                        <Table.Cell>
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noreferrer noopener"
                           >
-                            {item.comments.length}
-                          </Button>
-                        )}
-                      </Table.Cell>
-                    </tr>
-                  ))}
-                </Table.Body>
-              </Table>
+                            {item.title}
+                          </a>
+                        </Table.Cell>
+                        <Table.Cell textAlign="center">{item.ok}</Table.Cell>
+                        <Table.Cell textAlign="center">{item.nok}</Table.Cell>
+                        <Table.Cell textAlign="center">
+                          {moment(item.last_vote).format('DD/MM/YYYY HH:mm:ss')}
+                        </Table.Cell>
+                        <Table.Cell
+                          textAlign="center"
+                          className="comments-column"
+                        >
+                          {item.comments?.length > 0 && (
+                            <Button
+                              size="mini"
+                              onClick={() => {
+                                setViewComments(item);
+                              }}
+                            >
+                              {item.comments.length}
+                            </Button>
+                          )}
+                        </Table.Cell>
+                      </tr>
+                    ))}
+                  </Table.Body>
+                </Table>
 
-              <div className="contents-pagination">
-                <Pagination
-                  current={currentPage}
-                  total={Math.ceil(
-                    customerSatisfaction?.result?.items_total / b_size,
-                  )}
-                  pageSize={b_size}
-                  pageSizes={[50, intl.formatMessage(messages.all)]}
-                  onChangePage={(e, p) => {
-                    setCurrentPage(p.value);
-                  }}
-                  onChangePageSize={(e, s) => setB_size(s.value)}
-                />
-              </div>
-            </>
-          )}
-          <Comments
-            item={viewComments}
-            onClose={() => {
-              setViewComments(null);
-            }}
-          />
-        </Segment>
-      </Segment.Group>
-    </Container>
+                <div className="contents-pagination">
+                  <Pagination
+                    current={currentPage}
+                    total={Math.ceil(
+                      customerSatisfaction?.result?.items_total / b_size,
+                    )}
+                    pageSize={b_size}
+                    pageSizes={[50, intl.formatMessage(messages.all)]}
+                    onChangePage={(e, p) => {
+                      setCurrentPage(p.value);
+                    }}
+                    onChangePageSize={(e, s) => setB_size(s.value)}
+                  />
+                </div>
+              </>
+            )}
+            <Comments
+              item={viewComments}
+              onClose={() => {
+                setViewComments(null);
+              }}
+            />
+          </Segment>
+        </Segment.Group>
+      </Container>
+      {isClient && (
+        <Portal node={document.getElementById('toolbar')}>
+          <Toolbar pathname={pathname} inner={<span />} />
+        </Portal>
+      )}
+    </>
   );
 };
 
