@@ -108,7 +108,7 @@ const CustomerSatisfaction = () => {
   }
 
   if (isCmsUi(path)) {
-    return;
+    return null;
   }
 
   return (
