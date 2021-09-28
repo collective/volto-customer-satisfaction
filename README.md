@@ -25,11 +25,11 @@ import {CustomerSatisfaction} from 'volto-customer-satisfaction';
 ...
 ```
 
-<img alt="Form customer satisfaction" src="./docs/form-customer-satisfaction.png" width="400" />
+<img alt="Form customer satisfaction" src="./docs/form-customer-satisfaction.png" width="600" />
 
 When user click on 'Yes' or 'No' button a textarea is shown to leave a comment or suggestion:
 
-<img alt="Form customer satisfaction open" src="./docs/form-customer-satisfaction-open.png" width="400" />
+<img alt="Form customer satisfaction open" src="./docs/form-customer-satisfaction-open.png" width="600" />
 
 ## Panel
 
@@ -39,7 +39,7 @@ This addon also adds a button to the toolbar to access customer satisfaction pan
 
 Into the panel, you can view a summary of customer satisfaction feedbacks and leaved comments:
 
-<img alt="Customer satisfaction panel" src="./docs/panel.png" width="400" />
+<img alt="Customer satisfaction panel" src="./docs/panel.png" width="600" />
 
 Comments are shown in a modal and are filterable:
-<img alt="Customer satisfaction panel" src="./docs/comments.png" width="400" />
+<img alt="Customer satisfaction panel" src="./docs/comments.png" width="600" />
