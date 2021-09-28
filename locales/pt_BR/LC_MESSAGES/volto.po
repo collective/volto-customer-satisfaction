@@ -51,6 +51,10 @@ msgstr ""
 msgid "customer_satisfaction_comments_positive_votes"
 msgstr ""
 
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comments_remove_filter"
+msgstr ""
+
 #: components/manage/CSPanel/CSPanelMenu
 msgid "customer_satisfaction_confirm_delete_all"
 msgstr ""

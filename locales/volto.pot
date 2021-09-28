@@ -1,7 +1,7 @@
 msgid ""
  msgstr ""
  "Project-Id-Version: Plone\n"
- "POT-Creation-Date: 2021-09-28T10:31:15.800Z\n"
+ "POT-Creation-Date: 2021-09-28T14:50:31.246Z\n"
  "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
  "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
@@ -61,6 +61,11 @@ msgstr ""
 #: components/manage/CSPanel/Comments
 # defaultMessage: Positive votes
 msgid "customer_satisfaction_comments_positive_votes"
+msgstr ""
+
+#: components/manage/CSPanel/Comments
+# defaultMessage: Remove filter
+msgid "customer_satisfaction_comments_remove_filter"
 msgstr ""
 
 #: components/manage/CSPanel/CSPanelMenu

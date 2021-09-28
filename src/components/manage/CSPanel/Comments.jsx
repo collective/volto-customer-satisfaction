@@ -3,6 +3,7 @@ import { Modal, Button, Table, Label, Segment } from 'semantic-ui-react';
 import moment from 'moment';
 import { useIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 import ThumbsUp from '../../../icons/thumbs-up-regular.svg';
 import ThumbsDown from '../../../icons/thumbs-down-regular.svg';
@@ -31,6 +32,10 @@ const messages = defineMessages({
   filter: {
     id: 'customer_satisfaction_comments_filter',
     defaultMessage: 'Filter',
+  },
+  removeFilter: {
+    id: 'customer_satisfaction_comments_remove_filter',
+    defaultMessage: 'Remove filter',
   },
 });
 const Comments = ({ item, onClose = () => {} }) => {
@@ -92,6 +97,16 @@ const Comments = ({ item, onClose = () => {} }) => {
                 filter === 'nok' ? setFilter(null) : setFilter('nok');
               }}
             />
+            {filter != null && (
+              <Button
+                onClick={() => {
+                  setFilter(null);
+                }}
+                title={intl.formatMessage(messages.removeFilter)}
+              >
+                <Icon name={clearSVG} size="30px" />
+              </Button>
+            )}
           </Segment>
         )}
 

@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: components/manage/CSPanel/CSPanel
+ #: components/manage/CSPanel/CSPanel
 msgid "Customer satisfaction"
 msgstr "Customer satisfaction"
 
@@ -50,6 +50,10 @@ msgstr "Feedback negativi"
 #: components/manage/CSPanel/Comments
 msgid "customer_satisfaction_comments_positive_votes"
 msgstr "Feedback positivi"
+
+#: components/manage/CSPanel/Comments
+msgid "customer_satisfaction_comments_remove_filter"
+msgstr "Rimuovi filtri"
 
 #: components/manage/CSPanel/CSPanelMenu
 msgid "customer_satisfaction_confirm_delete_all"
