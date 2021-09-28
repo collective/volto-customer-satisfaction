@@ -103,8 +103,9 @@ const Comments = ({ item, onClose = () => {} }) => {
                   setFilter(null);
                 }}
                 title={intl.formatMessage(messages.removeFilter)}
+                mini
               >
-                <Icon name={clearSVG} size="30px" />
+                <Icon name={clearSVG} size="20px" />
               </Button>
             )}
           </Segment>
