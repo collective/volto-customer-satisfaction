@@ -12,7 +12,10 @@
     "volto-addon",
     "volto",
     "plone",
-    "react"
+    "react",
+    "customer-satisfaction",
+    "customer",
+    "satisfaction"
   ],
   "scripts": {
     "i18n": "NODE_ENV=production node src/i18n.js"
