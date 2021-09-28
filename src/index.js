@@ -25,6 +25,11 @@ export default function applyConfig(config) {
     import('react-google-recaptcha-v3'),
   );
 
+  config.settings.nonContentRoutes = [
+    ...config.settings.nonContentRoutes,
+    '/customer-satisfaction-panel',
+  ];
+
   config.addonReducers = {
     ...config.addonReducers,
     submitCustomerSatisfaction: submitCustomerSatisfactionReducer,
