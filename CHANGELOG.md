@@ -1,3 +1,12 @@
+### [0.2.3](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.2...v0.2.3) (2021-09-30)
+
+
+### Maintenance
+
+* publish to npm flag ([87eb70a](https://github.com/collective/volto-customer-satisfaction/commit/87eb70aff5542f4f2ef5a45cc69e92d007852a32))
+* read RAZZLE_RECAPTCHA_KEY from window if is not in process ([a20de8f](https://github.com/collective/volto-customer-satisfaction/commit/a20de8fe72ae2e19078e3893a83ef56cff12bdae))
+* updated release ([8ede1b3](https://github.com/collective/volto-customer-satisfaction/commit/8ede1b3c3f053e61ce0a5fc9bcff525a71923c73))
+
 ### [0.2.2](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.1...v0.2.2) (2021-09-28)
 
 
