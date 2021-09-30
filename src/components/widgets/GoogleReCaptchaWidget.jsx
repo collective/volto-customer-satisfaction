@@ -12,7 +12,9 @@ const GoogleReCaptchaWidget = ({ onVerify, GoogleReCaptcha, action }) => {
 
   return (
     <GoogleReCaptchaProvider
-      reCaptchaKey={process.env.RAZZLE_RECAPTCHA_KEY}
+      reCaptchaKey={
+        process.env.RAZZLE_RECAPTCHA_KEY ?? window.env.RAZZLE_RECAPTCHA_KEY
+      }
       language={intl.locale ?? 'en'}
     >
       <Grid.Row centered className="row-padded-top">
