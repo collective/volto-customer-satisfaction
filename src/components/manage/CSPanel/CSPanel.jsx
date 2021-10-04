@@ -20,7 +20,11 @@ import { defineMessages, useIntl } from 'react-intl';
 import Comments from './Comments';
 import moment from 'moment';
 
-import { getCustomerSatisfaction, deleteFeedbacks } from '../../../actions';
+import {
+  getCustomerSatisfaction,
+  deleteFeedbacks,
+  resetDeleteFeedbacks,
+} from '../../../actions';
 import CSPanelMenu from './CSPanelMenu';
 import './cs-panel.css';
 
@@ -107,6 +111,20 @@ const CSPanel = () => {
     (state) => state.getCustomerSatisfaction,
   );
 
+  const deleteFeedbacksState = useSelector(
+    (state) => state.deleteFeedbacks.subrequests,
+  );
+
+  const deleteFeedbacksLoading =
+    Object.keys(deleteFeedbacksState ?? [])?.filter(
+      (k) => deleteFeedbacksState[k].loading === true,
+    )?.length > 0;
+
+  const deleteFeedbacksEnd =
+    Object.keys(deleteFeedbacksState ?? [])?.filter(
+      (k) => deleteFeedbacksState[k].loaded === true,
+    )?.length > 0;
+
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -158,11 +176,21 @@ const CSPanel = () => {
       items?.forEach((item) => {
         dispatch(deleteFeedbacks(item));
       });
+      // doSearch().then(() => {
+      //   setItemsSelected([]);
+      // });
+    }
+  };
+
+  useEffect(() => {
+    if (deleteFeedbacksEnd) {
       doSearch().then(() => {
         setItemsSelected([]);
       });
+      dispatch(resetDeleteFeedbacks());
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deleteFeedbacksEnd]);
 
   return (
     <>

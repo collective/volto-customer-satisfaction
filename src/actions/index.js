@@ -3,6 +3,9 @@ export const SUBMIT_CUSTOMER_SATISFACTION_ACTION =
 export const RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION =
   'RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION';
 
+export const RESET_DELETE_FEEDBACKS =
+  'RESET_DELETE_FEEDBACKS_CUSTOMER_SATISFACTION';
+
 /**
  * submitCustomerSatisfaction function
  * @function submitCustomerSatisfaction
@@ -24,6 +27,10 @@ export function resetSubmitCustomerSatisfaction() {
   return {
     type: RESET_SUBMIT_CUSTOMER_SATISFACTION_ACTION,
   };
+}
+
+export function resetDeleteFeedbacks() {
+  return { type: RESET_DELETE_FEEDBACKS };
 }
 
 /**

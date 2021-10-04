@@ -16,6 +16,7 @@ export {
   getCustomerSatisfaction,
   deleteFeedbacks,
   resetSubmitCustomerSatisfaction,
+  resetDeleteFeedbacks,
 } from './actions';
 export { default as GoogleReCaptchaWidget } from './components/widgets/GoogleReCaptchaWidget';
 export { default as CustomerSatisfaction } from './components/CustomerSatisfaction/CustomerSatisfaction';

@@ -5,6 +5,7 @@ import {
   DELETE_ALL_CUSTOMERSATISFACTION_FEEDBACKS,
   GET_CUSTOMER_SATISFACTION,
   DELETE_FEEDBACKS,
+  RESET_DELETE_FEEDBACKS,
 } from '../actions';
 
 const initialState = {
@@ -149,6 +150,7 @@ export const deleteAllFeedbacks = (state = initialState, action = {}) => {
         loaded: true,
         loading: false,
       };
+
     default:
       return state;
   }
@@ -265,6 +267,10 @@ export const deleteFeedbacks = (state = initialState, action = {}) => {
               error: action.error,
             },
           };
+    case `${RESET_DELETE_FEEDBACKS}`:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }
