@@ -115,11 +115,6 @@ const CSPanel = () => {
     (state) => state.deleteFeedbacks.subrequests,
   );
 
-  const deleteFeedbacksLoading =
-    Object.keys(deleteFeedbacksState ?? [])?.filter(
-      (k) => deleteFeedbacksState[k].loading === true,
-    )?.length > 0;
-
   const deleteFeedbacksEnd =
     Object.keys(deleteFeedbacksState ?? [])?.filter(
       (k) => deleteFeedbacksState[k].loaded === true,
