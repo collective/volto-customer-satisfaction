@@ -1,6 +1,6 @@
 {
   "name": "volto-customer-satisfaction",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Volto addon for customer satisfaction.",
   "main": "src/index.js",
   "repository": "https://github.com/collective/volto-customer-satisfaction.git",

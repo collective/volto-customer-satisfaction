@@ -1,3 +1,16 @@
+### [0.2.5](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.3...v0.2.5) (2021-10-04)
+
+
+### Bug Fixes
+
+* fix resetFeedbacks reload ([f10c635](https://github.com/collective/volto-customer-satisfaction/commit/f10c635cf7f5b9e5bfd5778d4c9cd69a20804511))
+* removed unused variable ([655c8d2](https://github.com/collective/volto-customer-satisfaction/commit/655c8d27210bd48c6975be0bc018d1424b83f056))
+
+
+### Maintenance
+
+* changed version ([c1abb58](https://github.com/collective/volto-customer-satisfaction/commit/c1abb58c8e20bf9f1f5a2a9bbfc13cad1ab70c8c))
+
 ### [0.2.3](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.2...v0.2.3) (2021-09-30)
 
 
