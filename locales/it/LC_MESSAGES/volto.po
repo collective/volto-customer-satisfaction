@@ -11,118 +11,147 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
- #: components/manage/CSPanel/CSPanel
+#: components/manage/CSPanel/CSPanel
+# defaultMessage: Customer satisfaction
 msgid "Customer satisfaction"
 msgstr "Customer satisfaction"
 
 #: components/manage/CSToolbar
+# defaultMessage: Customer satisfaction control panel
 msgid "Cutomer satisfaction control panel"
 msgstr "Pannello di controllo Customer Satisfaction"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: All
 msgid "customer_satisfaction_all"
 msgstr "Tutti"
 
 #: components/manage/CSPanel/Comments
+# defaultMessage: Close
 msgid "customer_satisfaction_close_comments"
 msgstr "Chiudi"
 
 #: components/manage/CSPanel/Comments
+# defaultMessage: Comment
 msgid "customer_satisfaction_comment"
 msgstr "Commento"
 
 #: components/manage/CSPanel/Comments
+# defaultMessage: Date
 msgid "customer_satisfaction_comment_date"
 msgstr "Data"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Comments
 msgid "customer_satisfaction_comments"
 msgstr "Commenti"
 
 #: components/manage/CSPanel/Comments
+# defaultMessage: Filter
 msgid "customer_satisfaction_comments_filter"
 msgstr "Filtra"
 
 #: components/manage/CSPanel/Comments
+# defaultMessage: Negative votes
 msgid "customer_satisfaction_comments_negative_votes"
 msgstr "Feedback negativi"
 
 #: components/manage/CSPanel/Comments
+# defaultMessage: Positive votes
 msgid "customer_satisfaction_comments_positive_votes"
 msgstr "Feedback positivi"
 
 #: components/manage/CSPanel/Comments
+# defaultMessage: Remove filter
 msgid "customer_satisfaction_comments_remove_filter"
 msgstr "Rimuovi filtri"
 
 #: components/manage/CSPanel/CSPanelMenu
+# defaultMessage: Are you sure you want to delete all feedbacks?
 msgid "customer_satisfaction_confirm_delete_all"
 msgstr "Sei sicuro di voler eliminare tutti i feedback?"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Are you sure you want to reset this page's feedbacks?
 msgid "customer_satisfaction_confirm_delete_selected"
 msgstr "Sei sicuro di volere resettare i feedback delle pagine selezionate?"
 
 #: components/manage/CSPanel/CSPanelMenu
+# defaultMessage: Delete all feedbacks
 msgid "customer_satisfaction_delete_all"
 msgstr "Cancella tutti i feedback"
 
 #: components/manage/CSPanel/CSPanelMenu
+# defaultMessage: Export in CSV
 msgid "customer_satisfaction_export_csv"
 msgstr "Esporta in CSV"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Filter title
 msgid "customer_satisfaction_filter_title"
 msgstr "Filtra per titolo"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: items selected.
 msgid "customer_satisfaction_items_selected"
 msgstr "elementi selezionati."
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Last vote
 msgid "customer_satisfaction_last_vote"
 msgstr "Ultimo feedback"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Negative votes
 msgid "customer_satisfaction_negative_votes"
 msgstr "Negativi"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
+# defaultMessage: No
 msgid "customer_satisfaction_no"
 msgstr "No"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Page
 msgid "customer_satisfaction_page"
 msgstr "Pagina"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Positive votes
 msgid "customer_satisfaction_positive_votes"
 msgstr "Positivi"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Reset feedbacks
 msgid "customer_satisfaction_reset_feedbacks"
 msgstr "Reset feedbacks"
 
 #: components/manage/CSPanel/CSPanel
+# defaultMessage: Select item
 msgid "customer_satisfaction_select_item"
 msgstr "Seleziona l'elemento"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
+# defaultMessage: Submit your comment
 msgid "customer_satisfaction_submit"
 msgstr "Invia il tuo commento"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
+# defaultMessage: Explain us why, and help us improve the quality of the site
 msgid "customer_satisfaction_suggestions_placeholder"
 msgstr "Spiegaci perchè, e aiutaci a migliorare il servizio"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
+# defaultMessage: Thank you for your feedback!
 msgid "customer_satisfaction_thank_you"
 msgstr "Grazie per il tuo feedback!"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
+# defaultMessage: Was this page useful to you?
 msgid "customer_satisfaction_title"
 msgstr "Questa pagina ti è stata utile?"
 
 #: components/CustomerSatisfaction/CustomerSatisfaction
+# defaultMessage: Yes
 msgid "customer_satisfaction_yes"
 msgstr "Sì"

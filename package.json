@@ -18,7 +18,7 @@
     "satisfaction"
   ],
   "scripts": {
-    "i18n": "NODE_ENV=production node src/i18n.js"
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
   },
   "husky": {
     "hooks": {
@@ -33,7 +33,11 @@
     "husky": "^6.0.0",
     "release-it": "^14.10.1"
   },
+  "peerDependencies": {
+    "@plone/volto": ">=14.0.0"
+  },
   "dependencies": {
-    "react-google-recaptcha-v3": "1.9.5"
+    "react-google-recaptcha-v3": "1.9.5",
+    "@plone/scripts": "*"
   }
 }
