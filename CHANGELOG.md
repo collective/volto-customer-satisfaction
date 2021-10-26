@@ -1,3 +1,10 @@
+### [0.2.6](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.5...v0.2.6) (2021-10-26)
+
+
+### Maintenance
+
+* updated to volto 14 ([3c16131](https://github.com/collective/volto-customer-satisfaction/commit/3c16131bc134098a9395714f6aed1caab6002eda))
+
 ### [0.2.5](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.3...v0.2.5) (2021-10-04)
 
 
