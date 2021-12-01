@@ -68,10 +68,12 @@ const CustomerSatisfaction = () => {
   };
 
   useEffect(() => {
+    setSatisfaction(null);
+    setValidToken(null);
     return () => {
       dispatch(resetSubmitCustomerSatisfaction());
     };
-  }, []);
+  }, [path]);
 
   useEffect(() => {
     setFormData({
@@ -199,7 +201,6 @@ const CustomerSatisfaction = () => {
           </div>
         </Form>
       )}
-
       {submitResults?.loading && <Loader active inline="centered" />}
       {submitResults?.loaded && (
         <Message positive>
