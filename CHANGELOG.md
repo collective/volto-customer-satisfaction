@@ -1,3 +1,10 @@
+### [0.2.7](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.6...v0.2.7) (2021-12-01)
+
+
+### Bug Fixes
+
+* fixed unmount component when path change ([5ce69e2](https://github.com/collective/volto-customer-satisfaction/commit/5ce69e2e10ba003371a83fd8b0cabc0d3b926dbc))
+
 ### [0.2.6](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.5...v0.2.6) (2021-10-26)
 
 
