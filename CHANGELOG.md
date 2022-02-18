@@ -1,3 +1,10 @@
+### [0.2.8](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.7...v0.2.8) (2022-02-18)
+
+
+### Bug Fixes
+
+* fix read RAZZLE_RECAPTCHA_KEY from window ([6187dfd](https://github.com/collective/volto-customer-satisfaction/commit/6187dfdb19aa04b7a7dae0d134e3a43c04e57c38))
+
 ### [0.2.7](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.6...v0.2.7) (2021-12-01)
 
 
