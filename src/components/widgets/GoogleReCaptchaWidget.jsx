@@ -9,8 +9,10 @@ const GoogleReCaptchaWidget = ({ onVerify, GoogleReCaptcha, action }) => {
     GoogleReCaptcha: ReCaptcha,
     GoogleReCaptchaProvider,
   } = GoogleReCaptcha;
+  
+  
 
-  return (
+  return __CLIENT__? (
     <GoogleReCaptchaProvider
       reCaptchaKey={
         process.env.RAZZLE_RECAPTCHA_KEY ?? window.env.RAZZLE_RECAPTCHA_KEY
@@ -23,7 +25,7 @@ const GoogleReCaptchaWidget = ({ onVerify, GoogleReCaptcha, action }) => {
         </Grid.Column>
       </Grid.Row>
     </GoogleReCaptchaProvider>
-  );
+  ):<></>;
 };
 
 export default injectLazyLibs(['GoogleReCaptcha'])(GoogleReCaptchaWidget);
