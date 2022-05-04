@@ -1,3 +1,10 @@
+### [0.2.9](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.8...v0.2.9) (2022-05-04)
+
+
+### Bug Fixes
+
+* fixed ay11 and cspanel links ([51904f4](https://github.com/collective/volto-customer-satisfaction/commit/51904f41a974df1463c78239c874d559b6cffa3f))
+
 ### [0.2.8](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.7...v0.2.8) (2022-02-18)
 
 
