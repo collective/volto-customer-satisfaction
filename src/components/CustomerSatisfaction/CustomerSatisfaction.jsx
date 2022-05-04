@@ -171,7 +171,7 @@ const CustomerSatisfaction = () => {
             id="cs-more"
             role="region"
             aria-expanded={satisfaction !== null}
-            aria-hidden={satisfaction != null}
+            aria-hidden={satisfaction === null}
           >
             <div className="comment">
               <TextArea

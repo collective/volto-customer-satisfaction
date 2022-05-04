@@ -14,7 +14,7 @@ import {
   Message,
 } from 'semantic-ui-react';
 import { Pagination, Toolbar } from '@plone/volto/components';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, flattenToAppURL } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 
 import Comments from './Comments';
@@ -189,6 +189,7 @@ const CSPanel = () => {
 
   return (
     <>
+      <p>ciao</p>
       <Container
         id="page-customer-satisfaction"
         className="controlpanel-customer-satisfaction"
@@ -299,7 +300,7 @@ const CSPanel = () => {
                         </Table.Cell>
                         <Table.Cell>
                           <a
-                            href={item.url}
+                            href={flattenToAppURL(item.url)}
                             target="_blank"
                             rel="noreferrer noopener"
                           >
