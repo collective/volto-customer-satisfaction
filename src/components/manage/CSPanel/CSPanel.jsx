@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Portal } from 'react-portal';
+import { defineMessages, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
@@ -13,12 +14,12 @@ import {
   Input,
   Message,
 } from 'semantic-ui-react';
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { Pagination, Toolbar } from '@plone/volto/components';
 import { Helmet, flattenToAppURL } from '@plone/volto/helpers';
-import { defineMessages, useIntl } from 'react-intl';
 
 import Comments from './Comments';
-import moment from 'moment';
 
 import {
   getCustomerSatisfaction,
@@ -79,11 +80,15 @@ const messages = defineMessages({
     defaultMessage: "Are you sure you want to reset this page's feedbacks?",
   },
 });
-const CSPanel = () => {
+const CSPanel = ({ moment: Moment }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const location = useLocation();
   const pathname = location.pathname ?? '/';
+
+  const moment = Moment.default;
+  moment.locale(intl.locale);
+
   const [b_size, setB_size] = useState(50);
 
   const [sort_on, setSort_on] = useState('last_vote');
@@ -189,6 +194,7 @@ const CSPanel = () => {
 
   return (
     <>
+      <p>ciao</p>
       <Container
         id="page-customer-satisfaction"
         className="controlpanel-customer-satisfaction"
@@ -364,5 +370,4 @@ const CSPanel = () => {
     </>
   );
 };
-
-export default CSPanel;
+export default injectLazyLibs(['moment'])(CSPanel);

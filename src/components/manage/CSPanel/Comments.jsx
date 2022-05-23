@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button, Table, Label, Segment } from 'semantic-ui-react';
-import moment from 'moment';
 import { useIntl, defineMessages } from 'react-intl';
+import { Modal, Button, Table, Label, Segment } from 'semantic-ui-react';
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { Icon } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -38,8 +39,10 @@ const messages = defineMessages({
     defaultMessage: 'Remove filter',
   },
 });
-const Comments = ({ item, onClose = () => {} }) => {
+const Comments = ({ item, onClose = () => {}, moment: Moment }) => {
   const intl = useIntl();
+  const moment = Moment.default;
+  moment.locale(intl.locale);
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState(null);
   useEffect(() => {
@@ -164,4 +167,4 @@ const Comments = ({ item, onClose = () => {} }) => {
   );
 };
 
-export default Comments;
+export default injectLazyLibs(['moment'])(Comments);
