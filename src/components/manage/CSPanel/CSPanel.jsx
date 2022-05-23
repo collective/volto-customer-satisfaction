@@ -189,7 +189,6 @@ const CSPanel = () => {
 
   return (
     <>
-      <p>ciao</p>
       <Container
         id="page-customer-satisfaction"
         className="controlpanel-customer-satisfaction"
