@@ -1,3 +1,10 @@
+### [0.2.11](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.10...v0.2.11) (2022-05-23)
+
+
+### Maintenance
+
+* lazyloading libraries ([fc95ea9](https://github.com/collective/volto-customer-satisfaction/commit/fc95ea9187043985b9fb22eb5500d4e8e9063f71))
+
 ### [0.2.10](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.9...v0.2.10) (2022-05-23)
 
 ### [0.2.9](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.8...v0.2.9) (2022-05-04)
