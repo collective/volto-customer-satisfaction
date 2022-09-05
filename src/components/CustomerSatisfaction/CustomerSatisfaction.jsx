@@ -9,6 +9,7 @@ import { isCmsUi } from '@plone/volto/helpers';
 import ThumbsUp from '../../icons/thumbs-up-regular.svg';
 import ThumbsDown from '../../icons/thumbs-down-regular.svg';
 import GoogleReCaptchaWidget from '../widgets/GoogleReCaptchaWidget';
+import HoneypotWidget from '../widgets/HoneypotWidget/HoneypotWidget';
 import {
   submitCustomerSatisfaction,
   resetSubmitCustomerSatisfaction,
@@ -67,6 +68,13 @@ const CustomerSatisfaction = () => {
     }
   };
 
+  const updateFormData = (field, value) => {
+    setFormData({
+      ...formData,
+      [field]: value,
+    });
+  };
+
   useEffect(() => {
     setSatisfaction(null);
     setValidToken(null);
@@ -76,11 +84,10 @@ const CustomerSatisfaction = () => {
   }, [path]);
 
   useEffect(() => {
-    setFormData({
-      ...formData,
-      vote:
-        satisfaction === true ? 'ok' : satisfaction === false ? 'nok' : null,
-    });
+    updateFormData(
+      'vote',
+      satisfaction === true ? 'ok' : satisfaction === false ? 'nok' : null,
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [satisfaction]);
 
@@ -179,11 +186,12 @@ const CustomerSatisfaction = () => {
                   messages.suggestions_placeholder,
                 )}
                 onChange={(e, v) => {
-                  setFormData({ ...formData, comment: v.value });
+                  updateFormData('comment', v.value);
                 }}
               />
             </div>
 
+            <HoneypotWidget updateFormData={updateFormData} />
             <GoogleReCaptchaWidget
               key={action}
               onVerify={onVerifyCaptcha}

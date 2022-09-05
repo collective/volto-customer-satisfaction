@@ -17,6 +17,8 @@ It needs https://github.com/RegioneER/rer.customersatisfaction this Plone addon 
 
 It also need a RAZZLE_RECAPTCHA_KEY in your .env to work.
 
+From version 1.0.0 it needs rer.customersatisfaction >= 1.3.0 (added Honeypot integration).
+
 ```jsx
 import {CustomerSatisfaction} from 'volto-customer-satisfaction';
 

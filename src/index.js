@@ -19,6 +19,7 @@ export {
   resetDeleteFeedbacks,
 } from './actions';
 export { default as GoogleReCaptchaWidget } from './components/widgets/GoogleReCaptchaWidget';
+export { default as HoneypotWidget } from './components/widgets/HoneypotWidget/HoneypotWidget';
 export { default as CustomerSatisfaction } from './components/CustomerSatisfaction/CustomerSatisfaction';
 
 export default function applyConfig(config) {
