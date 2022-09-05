@@ -15,7 +15,7 @@ Created with [voltocli](https://github.com/nzambello/voltocli).
 This addons exports CustomerSatisfaction component that could be added in your site pages to get feedback from users on the usefulness of the page.
 It needs https://github.com/RegioneER/rer.customersatisfaction this Plone addon to work.
 
-It also need a RAZZLE_RECAPTCHA_KEY in your .env to work.
+It also need a RAZZLE_RECAPTCHA_KEY in your .env to work or RAZZLE_HONEYPOT_FIELD env var..
 
 From version 1.0.0 it needs rer.customersatisfaction >= 1.3.0 (added Honeypot integration).
 
@@ -45,3 +45,7 @@ Into the panel, you can view a summary of customer satisfaction feedbacks and le
 
 Comments are shown in a modal and are filterable:
 <img alt="Customer satisfaction panel" src="./docs/comments.png" width="600" />
+
+## Honeypot integration
+
+If you want to use Honeypot, you have to set env var RAZZLE_HONEYPOT_FIELD with the same value of the HONEYPOT_FIELD env var setted on plone backend.
