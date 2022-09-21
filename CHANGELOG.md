@@ -1,3 +1,15 @@
+## [0.3.0](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.11...v0.3.0) (2022-09-21)
+
+
+### Features
+
+* added Honeypot integration ([78ff76e](https://github.com/collective/volto-customer-satisfaction/commit/78ff76efaf4c010387dc515913b6bab4a5fecd1e))
+
+
+### Maintenance
+
+* updated readme ([edceb8e](https://github.com/collective/volto-customer-satisfaction/commit/edceb8e6f338fa52918e1f60c735d15777d1df0f))
+
 ### [0.2.11](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.10...v0.2.11) (2022-05-23)
 
 
