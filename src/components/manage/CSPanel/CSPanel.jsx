@@ -125,6 +125,7 @@ const CSPanel = ({ moment: Moment }) => {
   const deleteFeedbacksState = useSelector(
     (state) => state.deleteFeedbacks.subrequests,
   );
+  console.log(customerSatisfaction);
 
   const deleteFeedbacksEnd =
     Object.keys(deleteFeedbacksState ?? [])?.filter(
