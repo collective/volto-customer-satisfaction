@@ -1,10 +1,7 @@
 import React from 'react';
 import './honeypot_widget.css';
 
-const HoneypotWidget = ({ updateFormData }) => {
-  const field =
-    process.env.RAZZLE_HONEYPOT_FIELD ?? window.env.RAZZLE_HONEYPOT_FIELD;
-
+const HoneypotWidget = ({ updateFormData, field }) => {
   return field ? (
     <div className="hpt_widget">
       <input
