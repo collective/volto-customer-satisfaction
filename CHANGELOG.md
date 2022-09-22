@@ -1,3 +1,11 @@
+### [0.3.1](https://github.com/collective/volto-customer-satisfaction/compare/v0.3.0...v0.3.1) (2022-09-22)
+
+
+### Maintenance
+
+* updated submit with honeypot default value ([f1bbdf6](https://github.com/collective/volto-customer-satisfaction/commit/f1bbdf60ec745860098d5b027f8d9d02e1a6a038))
+* updated yarn.lock ([617666b](https://github.com/collective/volto-customer-satisfaction/commit/617666b1b066e146e2b7730a2c4de0a84325e8e1))
+
 ## [0.3.0](https://github.com/collective/volto-customer-satisfaction/compare/v0.2.11...v0.3.0) (2022-09-21)
 
 
