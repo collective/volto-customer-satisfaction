@@ -118,14 +118,13 @@ const CSPanel = ({ moment: Moment }) => {
   const isUnauthorized = useMemo(
     () =>
       customerSatisfaction?.error &&
-      customerSatisfaction?.error?.status === '401',
+      customerSatisfaction?.error?.status === 401,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [customerSatisfaction?.error],
   );
   const deleteFeedbacksState = useSelector(
     (state) => state.deleteFeedbacks.subrequests,
   );
-  console.log(customerSatisfaction);
 
   const deleteFeedbacksEnd =
     Object.keys(deleteFeedbacksState ?? [])?.filter(
