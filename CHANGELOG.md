@@ -1,3 +1,11 @@
+### [0.3.2](https://github.com/collective/volto-customer-satisfaction/compare/v0.3.1...v0.3.2) (2022-09-29)
+
+
+### Bug Fixes
+
+* CSPanel with data and actions visible even when user is unauthorized ([3a099ce](https://github.com/collective/volto-customer-satisfaction/commit/3a099cef03e27f2f8f3d1710fb2a34b35c8a884c))
+* fixed error code ([67474a7](https://github.com/collective/volto-customer-satisfaction/commit/67474a75c8b3c60dbd53197d6276054119da8f30))
+
 ### [0.3.1](https://github.com/collective/volto-customer-satisfaction/compare/v0.3.0...v0.3.1) (2022-09-22)
 
 
