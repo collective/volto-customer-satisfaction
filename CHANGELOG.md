@@ -1,3 +1,10 @@
+### [0.3.3](https://github.com/collective/volto-customer-satisfaction/compare/v0.3.2...v0.3.3) (2022-09-30)
+
+
+### Bug Fixes
+
+* fixed window.env with _CLIENT_ condition ([092011f](https://github.com/collective/volto-customer-satisfaction/commit/092011f4bb5bab61b683bfe1ae9b80040f82552d))
+
 ### [0.3.2](https://github.com/collective/volto-customer-satisfaction/compare/v0.3.1...v0.3.2) (2022-09-29)
 
 
