@@ -1,3 +1,10 @@
+## [1.0.0](https://github.com/collective/volto-customer-satisfaction/compare/v0.3.3...v1.0.0) (2022-10-30)
+
+
+### Changes
+
+* upgraded dependencies and babel config for volto 16 ([#5](https://github.com/collective/volto-customer-satisfaction/issues/5)) ([41b8088](https://github.com/collective/volto-customer-satisfaction/commit/41b8088810fa6b7bbb557bbfdf80fe7f740e5144))
+
 ### [0.3.3](https://github.com/collective/volto-customer-satisfaction/compare/v0.3.2...v0.3.3) (2022-09-30)
 
 
