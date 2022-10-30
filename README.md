@@ -13,11 +13,14 @@ Created with [voltocli](https://github.com/nzambello/voltocli).
 ## Usage
 
 This addons exports CustomerSatisfaction component that could be added in your site pages to get feedback from users on the usefulness of the page.
-It needs https://github.com/RegioneER/rer.customersatisfaction this Plone addon to work.
+It needs <https://github.com/RegioneER/rer.customersatisfaction> this Plone addon to work.
 
 It also need a RAZZLE_RECAPTCHA_KEY in your .env to work or RAZZLE_HONEYPOT_FIELD env var..
 
-From version 1.0.0 it needs rer.customersatisfaction >= 1.3.0 (added Honeypot integration).
+From version 0.3.0 it needs rer.customersatisfaction >= 1.3.0 (added Honeypot integration).
+
+If you are on Volto version 15 or lower, use version 0.x of this add-on.
+Version 1.0.0 requires Volto >= 16.0.0-alpha.38.
 
 ```jsx
 import {CustomerSatisfaction} from 'volto-customer-satisfaction';

@@ -29,15 +29,15 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@plone/scripts": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.1",
     "husky": "^6.0.0",
     "release-it": "^14.10.1"
   },
   "peerDependencies": {
-    "@plone/volto": ">=14.0.0"
+    "@plone/volto": ">=16.0.0-alpha.38"
   },
   "dependencies": {
-    "react-google-recaptcha-v3": "1.9.5",
-    "@plone/scripts": "*"
+    "react-google-recaptcha-v3": "1.9.5"
   }
 }
