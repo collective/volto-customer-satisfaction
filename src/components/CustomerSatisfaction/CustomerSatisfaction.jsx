@@ -115,7 +115,7 @@ const CustomerSatisfaction = () => {
     dispatch(
       submitCustomerSatisfaction(path, {
         ...formData,
-        'g-recaptcha-response': validToken,
+        ...(captcha && { 'g-recaptcha-response': validToken }),
       }),
     );
   };
