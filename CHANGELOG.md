@@ -1,3 +1,15 @@
+## [1.1.0](https://github.com/collective/volto-customer-satisfaction/compare/v1.0.0...v1.1.0) (2023-02-15)
+
+
+### Features
+
+* added german translations ([#8](https://github.com/collective/volto-customer-satisfaction/issues/8)) ([dfd8401](https://github.com/collective/volto-customer-satisfaction/commit/dfd8401535ab6ef1c679a33f6692684783d6e2e3))
+
+
+### Bug Fixes
+
+* allow use without captcha ([d6cd739](https://github.com/collective/volto-customer-satisfaction/commit/d6cd739cf2e5ac1a1c8cff772eb0e0020def85b4))
+
 ## [1.0.0](https://github.com/collective/volto-customer-satisfaction/compare/v0.3.3...v1.0.0) (2022-10-30)
 
 
